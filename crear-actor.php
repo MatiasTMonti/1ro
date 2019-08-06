@@ -1,17 +1,13 @@
 <?php
 	require_once 'autoload.php';
 
-	$genres = DB::getAllActor();
-
 	if ($_POST) {
-		$actorToSave = new actor($_POST['nombre'], $_POST['apellido'], $_POST['peliculas']);
-
-		$actorToSave->setID($_POST['id']);
+		$actorToSave = new actor($_POST['name'], $_POST['lastName'], $_POST['age'], $_POST['bestMovie']);
 
 		$saved = DB::saveActor($actorToSave);
 	}
 
-	$pageTitle = 'Crear actor';
+	$pageTitle = 'Agregar actor';
 	require_once 'partials/head.php';
 	require_once 'partials/navbar.php';
 ?>
@@ -19,37 +15,31 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-10">
-					<h2>Crear actor</h2>
+					<h2>Agregar actor</h2>
 					<form method="post">
 						<div class="row">
 							<div class="col-6">
 								<div class="form-group">
-									<label>Actor:</label>
-									<input type="text" class="form-control" placeholder="Ej: Bruce" name="nombre">
+									<label>Nombre:</label>
+									<input type="text" class="form-control" placeholder="Ej: Franco" name="name">
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
-									<label>Rating:</label>
-									<input type="text" class="form-control" placeholder="Ej: Willis" name="Apellido">
+									<label>Apellido:</label>
+									<input type="text" class="form-control" placeholder="Ej: Armani" name="lastName">
+								</div>
+							</div>
+              <div class="col-6">
+								<div class="form-group">
+									<label>Edad:</label>
+									<input type="text" class="form-control" placeholder="Ej: 31 años" name="age">
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
-									<label>Premios:</label>
-									<input type="text" class="form-control" placeholder="Ej: Duro De Matar" name="Pelicula">
-								</div>
-							</div>
-							</div>
-							<div class="col-6">
-								<div class="form-group">
-									<label>Género:</label>
-									<select class="form-control" name="id">
-										<option value="">Elegí un género</option>
-										<?php foreach ($generos as $genero): ?>
-											<option value="<?php echo $genero->getID() ?>"><?php echo $genero->getName() ?></option>
-										<?php endforeach; ?>
-									</select>
+									<label>Pelicula preferida del actor:</label>
+									<input type="text" class="form-control" placeholder="Ej: The lord of Ring" name="bestMovie">
 								</div>
 							</div>
 							<div class="col-12 text-center">
@@ -63,7 +53,7 @@
 				<div
 					class="alert <?php echo $saved ? 'alert-success' : 'alert-danger'?>"
 				>
-					<?php echo $saved ? '¡Actor guardado con éxito!' : '¡No se pudo guardar el Actor!' ?>
+					<?php echo $saved ? '¡Actor agregado con éxito!' : '¡No se pudo agregar el actor!' ?>
 				</div>
 			<?php endif; ?>
 		</div>

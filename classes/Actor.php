@@ -5,6 +5,7 @@ class actor{
   private $id;
   private $nombre;
   private $apellido;
+  private $peliculas;
   private $edad;
 
   public function __construct($id ,$nombre, $apellido, $peliculas)
@@ -13,6 +14,7 @@ class actor{
     $this->nombre = $nombre;
     $this->apellido = $apellido;
     $this->peliculas = $peliculas;
+    $this->edad = $edad;
   }
 
  public function setNombre($nombre)
@@ -43,8 +45,16 @@ class actor{
  {
    $this->id = $id;
  }
- public function getEdad()
+ public function getId()
  {
    return $this->id;
+ }
+ public function setEdad($edad)
+ {
+   $this->edad = $edad;
+ }
+ public function getEdad()
+ {
+   return $this->edad;
  }
 }

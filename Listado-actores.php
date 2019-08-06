@@ -1,9 +1,9 @@
 <?php
 	require_once 'autoload.php';
 
-	$movies = DB::getAllActor();
+	$actors = DB::getAllActors();
 
-	$pageTitle = 'Listado de actores';
+	$pageTitle = 'Listado de Actores';
 	require_once 'partials/head.php';
 	require_once 'partials/navbar.php';
 ?>
@@ -15,8 +15,8 @@
 			    			<tr>
 								<th scope="col">Nombre</th>
 								<th scope="col">Apellido</th>
-								<th scope="col">Peliculas</th>
 								<th scope="col">Edad</th>
+								<th scope="col">Pelicula preferida</th>
 			    			</tr>
 			  			</thead>
 			  			<tbody>
